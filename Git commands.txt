@@ -1,0 +1,17 @@
+First create Git-hub repo (git-poc).
+download git bash tool & install it using default settings.
+And use git from git bash or Command promt.
+create a new folder where we gonna init the Git.
+Add any file (.txt,.php,.sql etc..) and name it without any spaces.
+go that file and open git bash/cmd.
+after that give
+	git init
+	git status (here you can see the untracked files)
+	git add . (this command will change the file state to "staged" or "yet to commit files" )
+	git rm --cached <file> (this command will change the file state to "unstaged")
+	git commit -m <message> ( this command will commit the file which were in the staged area.)
+		If its our first time then it will ask "Tell me who you are".
+	git config --global user.email "your github email ID"
+	git config --global user.name "your github user name"
+	git remote add orgin url of your github repo(this command will add remote orgin to your Github reop)
+	
