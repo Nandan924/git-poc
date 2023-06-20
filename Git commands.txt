@@ -21,7 +21,7 @@ after that give
 	git branch --delete <branch name> or git branch -d <branch-name> (this will delete the created branch)
 	git branch <new branch name> (this will create a new branch)
 	git merge <branch name> (this command will merge two branchs into one)
-
+	git pull <reop-url> (this command will pull the updates from the remote repo)
 
 Note:
 we can use "git log" to see logs file like commit data
