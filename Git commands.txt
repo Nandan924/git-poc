@@ -30,3 +30,6 @@ we can use "git log" to see logs file like commit data
 errors
 Q)failed to push some refs to 'repo url' 
 sol: git pull --rebase origin main
+
+Q) If you ever stuck in "git log" page and its telling "press return"
+sol: press "Q" and hit "Enter button"
