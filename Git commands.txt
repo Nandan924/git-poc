@@ -13,7 +13,7 @@ after that give
 		If its our first time then it will ask "Tell me who you are".
 	git config --global user.email "your github email ID"
 	git config --global user.name "your github user name"
-	git remote add orgin url of your github repo(this command will add remote orgin to your Github reop)
+	git remote add origin url of your github repo(this command will add remote orgin to your Github reop)
 	git push -u origin main/master (this command will push the code to github)
 	git log (using this command we can get the commit id/ commit hash, using that we can roll back to previous or any wanted previous commit)
 	git checkout commit-hash/commit-ID
@@ -22,6 +22,7 @@ after that give
 	git branch <new branch name> (this will create a new branch)
 	git merge <branch name> (this command will merge two branchs into one)
 	git pull <reop-url> (this command will pull the updates from the remote repo)
+	git pull 
 
 Note:
 we can use "git log" to see logs file like commit data

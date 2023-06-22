@@ -1,0 +1,87 @@
+First to use docker we need linux machine to run docker.
+For that we are using AWS linux 2
+We need to lunch the aws linux & connect to it (using putty,aws connect,git bash)
+Today we are using git bash to connect through SSH using command
+	ssh -i "pem-key-name.pem" ec2-user@ec2-public-ip-address.region.compute.amazonaws.com
+Once we enter that we will prompted with yes/no type "yes"
+Once SSH connection is established run update command:
+	sudo yum update -y
+Then we need to isntall docker
+	sudo yum install docker
+To start the docker services
+	sudo service docker start
+If we go and give
+	docker info (we get error, premission denied)
+Because we are in normal user to change that we can use 
+	sudo usermod -aG docker ec2-user/username
+After the above step is done reboot your instance once
+	sudo reboot
+	sudo service docker start
+	docker info
+Now we can see docker is up and running
+Then we can check if there is any images is there or not by
+	docker images
+And for container
+	docker ps(this will show us running container)
+
+To run docker image
+	docker run name:tag
+	eg:docker run nginx:1.24
+When the container starts we can see a lot of logs and it block our terminal by entering new commands.
+To fix this issue we can use
+First press crtl+c
+	docker run -d nginx:1.24 (-d or --detach )
+And if you wanna see the logs of service running in container
+	docker logs container-ID
+	eg:docker logs edadser81
+
+In docker we can run Image from docker-hub directly without pulling it to local machine by simply running the "docker run ubuntu"
+we need to bind the port of container to access the container thorugh the web
+Note:
+Port Binding: Bind the container's port to the host's port to
+make the service available to the outside world 
+
+To do it first we need to stop the running containers by
+	docker stop container-id
+Next
+	docker run -d -p 9000:80 nginx 1.24 [(-p or --publish) & syntax (-p {host_port}:{container_port})]
+NOTE:
+*Only 1 service can run on a specific port on the host
+ e.g. only 1 service can run on port 9000
+*Docker will create new container every time we run the 'run' command(we can see all the stopped container by "docker ps -a"), so instead of creating new container everytime we can use 'docker stop container-id' to start the same container 'docker start container-id'
+And we can stop multiple container at once by giving container-id
+	eg: docker stop 721SADFEFE 7234SADAS
+It's hard remeber the container-id, if their was 100 of them so we can assign a name to them by
+	docker run --name web-app -d -p 9000:80 nginx:1.24 (--name = Assign a name to the container)
+
+Next 
+need to see about the "Dockerfile"
+
+
+2022-7-6
+
+we have 
+	docker search ubuntu
+	docker pull ubuntu
+	docker run -it unbuntu /bin/bash (to enter into the container)
+	docker attach container-name (to enter into the container)
+	exit (to come out of the container)
+	docker rm container-name (to delete the container)
+	docker rm -f container-name (it will remove the container forcefully)
+	docker diff container-name
+	docker commit existing-container-name new-Image-name (to create a new image from existing container)
+To build docker img from Dockerfile
+	First we need to create file named "Dockerfile"
+	Inside that file we should enter the following
+		FROM centos
+		RUN echo "container from centos" > /logon
+		VOLUME ["/doc_vol"]
+	Then we need to run one command 
+		docker build -t kl . (-t is taging, "kl" is name of the image built by centos, "." in linux . represent current working directory)
+NOTE:
+Docker volume: This is used to connect the docker containers with each other to share files.
+
+
+docker run -it --name container-name --privileged=true --volumes-from doc_vol ubuntu /bin/bash ("doc_vol" is where we have already have volume by running from Dockerfile)
+
+ended till 2022-7-9
