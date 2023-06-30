@@ -1,0 +1,22 @@
+What is Grafana?
+
+Grafana is a multi-platform open source analytics and interactive visualization web application. It provides charts, graphs, and alerts for the web when connected to supported data sources.
+
+FEATURES OF GRAFANA
+▪ Unify your data, not your database - Grafana doesn't require you to ingest data to a backend store or vendor
+database. Instead, Grafana takes a unique approach to providing a "single-pane-of-glass" by unifying your existing data,
+wherever it lives.
+■ Data everyone can see - Grafana was built on the principle that data should be accessible to everyone in your
+organization, not just the single Ops person.
+■ Dashboards that anyone can use - Not only do Grafana dashboards give insightful meaning to data collected from
+numerous sources, but you can also share the dashboards you create with other team members, allowing you to explore
+the data together.
+■ Flexibility and versatility - Translate and transform any of your data into flexible and versatile dashboards. Unlike
+other tools, Grafana allows you to build dashboards specifically for you and your team.
+
+
+
+Note:
+To kill the process
+	- kill pid
+	- kill -KILL pid
