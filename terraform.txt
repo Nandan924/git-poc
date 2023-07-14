@@ -1,0 +1,90 @@
+Terraform is Better at provisioning Infrastructure.
+But Ansible is Better at Configuring that infrastructure,Deploying installing applications & services on them.
+
+How to intall Terraform in windows.
+>First we need to go to the website: https://developer.hashicorp.com/terraform/downloads?product_intent=terraform
+>Next we can download the zip file.
+>then we can extract the file to c folder.
+>and thn, open the cmd and type terraform -v 
+o/p: Terraform v1.5.2
+>if u get it thn terraform is installed crtly.
+
+syntax:
+resource "<provider>_<resource_type>" "name" {
+	config options.......
+	key="value"
+	key2="value"
+}
+
+how to create a vpc using terraform
+
+>need to make sure that both vpc and subnet should be in same cidr range.
+
+  resource "aws_vpc" "my_first_vpc" {
+        cidr_block = "10.0.0.0/16"
+        tags={
+            Name="Prod_vpc"
+        }
+    }
+
+    resource "aws_subnet" "first_subnet" {
+        vpc_id = aws_vpc.my_first_vpc.id     // this line featch the vpc id from above code and provider here.
+        cidr_block = "10.0.1.0/24"
+        tags={
+            Name="prod_subnet"
+        }   
+    }
+
+
+
+
+Commands we use in the terraform are:
+-> terraform init
+-> terraform plan
+-> terraform apply
+
+Note:
+if you wanna skip the "yes" typing always means we can use '--auto-approve' in the end of terraform apply
+
+-> terraform destroy
+-> terraform state list (for showing the list of services being used.)
+-> terraform state show <service-name> (this will show the indepth view of that service like whats going on )
+-> terraform refresh (is use to see the outputs without being doing terrform apply)
+
+Note:
+> one more thing to get particalur value to be printed in Output, thn we can use 'output'
+eg: 
+-> output "name" {
+	value = resource-name.terraform-name.public_ip
+	}
+
+> If we have alot of resources in our script and we wanna target only one resource in terraform then we use "-target"
+syntax:
+-> terraform destroy -target <resource-name.terraform-name>
+
+eg:
+-> terraform destroy -traget aws_instance.my_instance
+or
+-> terraform apply -target aws_instance.my_instance
+
+terraform variables:
+> it is used to pass the value while executing the script like.
+syntax:
+-> variable "var-name"{
+	description = "anything"  (optional)
+	default ="10.0.66.0/24"		(optional, it is used when user dont insert any value, terraform will take a by default value from this tag)
+	type = string/number/bollen etc (optional, if we specify the variable type as string thn if we pass/give list value, it will throw the error)
+}
+
+eg: 
+-> variable "subnet-1"{
+	description ="cidr block"
+}
+
+in subnet section we need to reference it by using:
+-> resource "aws_subnet" "my-subnet"{
+	cidr_block = var.subnet-1
+}
+
+> In case we had variables in file. terraform by default checks for 'terraform.tfvars' file if our file name is same as defualt then no worries, if our file name is diffrent like (example.tfvars) then we have to pass the file name in commands like:
+-> terraform apply -var-file example.tfvars

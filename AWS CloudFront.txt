@@ -1,0 +1,3 @@
+AWS cloudfront is a globally-distributed network offered by AWS  which securely delivers content to the end user with a high transfer speed and low latency.
+
+for reference:https://youtu.be/Vr4N_ZA-uGo

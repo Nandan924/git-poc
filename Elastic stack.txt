@@ -1,0 +1,20 @@
+it is a group of open source applictions
+1 elastic search: is open source analytics and full text search engine.
+	it is built in java
+	and have features as auto completing, correcting typos, handling synonyms.
+
+2 kibana: it is a dashboard and used to analysing and visualistion
+
+3 logstash:
+
+
+
+
+
+
+
+Disaster recovery :
+Recovery point objective (RPO) is defined as the maximum amount of data – as measured by time – that can be lost after a recovery from a disaster, failure, or comparable event before data loss will exceed what is acceptable to an organization.
+
+
+Recovery Time Objective (RTO) is the duration of time and a service level within which a business process must be restored after a disaster in order to avoid unacceptable consequences associated with a break in continuity.
